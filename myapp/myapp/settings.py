@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'signup',
     'home',
     'top',
+    'diary',
 ]
 
 ROOT_URLCONF = 'myapp.urls'

@@ -32,16 +32,6 @@
       </div>
       <!-- /パスワード -->
 
-      <!-- パスワード確認 -->
-      <div>
-        <label for="password2">パスワードの確認 <span>必須</span></label>
-        <div>
-          {% csrf_token %}
-          {{ form.password2 }}
-        </div>
-      </div>
-      <!-- /パスワード確認 -->
-
       <!-- 確認ボタン -->
       <div>
             <button type="submit">登録する</button>

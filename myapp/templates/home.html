@@ -9,5 +9,16 @@
 <body>
   <h1>welcome</h1>
   <a href="{% url 'logout' %}">ログアウト</a>
+  <a href="{% url 'diary:new_diary' %}">日記を書く</a>
+
+  {% for diary in diarys %}
+    <div>
+      <p>{{ diary.created_date|date:"Y n/j H:i"}}</p>
+      <p>{{ diary.text }}</p>
+      <p>
+        <a href="{% url 'diary:delete' diary.id %}">削除</a>
+      </p>
+    </div>
+  {% endfor %}
 </body>
 </html>
