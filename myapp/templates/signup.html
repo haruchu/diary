@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>signup</title>
+</head>
+<body>
+  <h1>ユーザー登録</h1>
+  <div>
+    <form action="{% url 'signup:confirm' %}" method="post">
+      <!-- ユーザ名 -->
+      <div>
+        <label for="name">
+            ユーザ名 <span>必須</span>
+        </label>
+        <div>
+            {% csrf_token %}
+            {{ form.username }}
+        </div>
+      </div>
+      <!-- /ユーザ名 -->
+
+      <!-- パスワード -->
+      <div>
+        <label for="password">パスワード<span>必須</span></label>
+        <div>
+          {% csrf_token %}
+          {{ form.password1 }}
+        </div>
+      </div>
+      <!-- /パスワード -->
+
+      <!-- 確認ボタン -->
+      <div>
+            <button type="submit">登録する</button>
+      </div>
+    </form>
+  </div>
+  <div class="back">
+    <a href="{% url 'top:top' %}"><span><i></i>TOP</span></a>
+  </div>
+</body>
+</html>
