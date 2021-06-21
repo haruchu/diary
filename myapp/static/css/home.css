@@ -1,0 +1,48 @@
+body {
+  background-color: #d9ccc1;
+}
+
+.diaries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.diary {
+  width: 180px;
+  height: 180px;
+  border-radius: 30%;
+  margin: 30px 40px;
+  overflow: hidden;
+}
+
+.diary .content-view {
+  background-color: white;
+  padding: 10px;
+  height: 70%;
+}
+
+.diary .content-view p {
+  margin: 8px;
+  overflow: hidden;
+}
+
+.diary .action-content {
+  background-color: #c5b3a3;
+  height: 30%;
+  position: relative;
+}
+
+.diary .action-content .delete {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: gray;
+  color: white;
+  position: absolute;
+  top: 8px;
+  right: 40px;
+}
