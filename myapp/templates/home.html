@@ -23,8 +23,10 @@
         {% for diary in diarys %}
         <div class="diary">
           <div class="content-view">
-            <p>{{ diary.created_date|date:"Y n/j H:i"}}</p>
-            <p>{{ diary.title }}</p>
+            <a href="#" class="content-link">
+              <span>{{ diary.created_date|date:"Y n/j H:i"}}</span>
+              <span>{{ diary.title }}</span>
+            </a>
           </div>
           <div class="action-content">
             <p>

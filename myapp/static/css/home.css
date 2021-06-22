@@ -20,11 +20,23 @@ body {
 
 .diary .content-view {
   background-color: white;
-  padding: 10px;
   height: 70%;
 }
 
-.diary .content-view p {
+.diary .content-view .content-link {
+  display: block;
+  height: 100%;
+  padding: 20px;
+  color: black;
+}
+
+.diary .content-view .content-link:hover {
+  text-decoration: none;
+}
+
+
+
+.diary .content-view span {
   margin: 8px;
   overflow: hidden;
 }
