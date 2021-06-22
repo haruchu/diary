@@ -23,7 +23,7 @@
         {% for diary in diarys %}
         <div class="diary">
           <div class="content-view">
-            <a href="#" class="content-link">
+            <a href="{% url 'diary:diary' diary.id %}" class="content-link">
               <span>{{ diary.created_date|date:"Y n/j H:i"}}</span>
               <span>{{ diary.title }}</span>
             </a>

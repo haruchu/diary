@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../static/css/diary.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="v-center"></div>
+    <div id="container">
+      <div class="book">
+        <div class="first paper">
+          <div class="page front contents">
+            <div class="intro">
+              <h2>日記</h2>
+            </div>
+          </div>
+          <div class="page back"></div>
+        </div>
+        <div class="second paper">
+          <div class="page front last contents">
+            <div id="">{ diary.title }</div>
+          </div>
+          <div class="page back"></div>
+        </div>
+        <div class="side"></div>
+        <div class="bottom"></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        $(".front:not(.last)").on("click", function () {
+          $(".book").addClass("open");
+          $(this).parent(".paper").addClass("open");
+        });
+
+        $(".back").on("click", function () {
+          if ($(this).parent(".paper").index() == 0) {
+            $(".book").removeClass("open");
+          }
+          $(this).parent(".paper").removeClass("open");
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>

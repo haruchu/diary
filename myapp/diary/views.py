@@ -38,3 +38,13 @@ def delete(request, diary_id):
     diary = Diary.objects.get(pk=diary_id)
     diary.delete()
     return redirect('/home')
+
+
+@login_required
+def diary(request, diary_id):
+    diary = Diary.objects.get(pk=diary_id)
+    context ={
+        'diary': Diary.objects.get(pk=diary_id),
+    }
+    return render(request, 'diary.html', context)
+
