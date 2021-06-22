@@ -15,6 +15,7 @@ body {
   border-radius: 30%;
   margin: 30px 40px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .diary .content-view {
@@ -38,7 +39,7 @@ body {
   margin: 0;
 }
 
-.diary .action-content #delete {
+.diary .action-content .delete {
   width: 40px;
   height: 40px;
   display: flex;
@@ -52,26 +53,16 @@ body {
   right: 40px;
 }
 
-.trash {
-  width: 40px;
-  height: 60px;
+#trash {
+  width: 100px;
+  height: 120px;
   position: fixed;
   bottom: 30px;
   right: 50px;
   background-color: gray;
+  text-align: center;
 }
 
-.card_favorited {
-  transform-origin: 0.5em 0.5em;
-}
-
-.card_favorited::after {
-  z-index: 1;
-  opacity: 1;
-}
-
-.card_hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: scale(0.5);
+.mini {
+  transform: scale(0.5,0.5);
 }

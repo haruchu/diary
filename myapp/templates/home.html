@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../static/css/home.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>home</title>
   </head>
   <body>
@@ -27,33 +28,16 @@
           </div>
           <div class="action-content">
             <p>
-              <a id="delete" href="{% url 'diary:delete' diary.id %}">消</a>
+              <a class="delete" href="{% url 'diary:delete' diary.id %}">消</a>
             </p>
           </div>
         </div>
         {% endfor %}
       </div>
-      <span class="trash">ゴミ箱</span>
+      <span id="trash">ゴミ箱</span>
     </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    >
+    <script>
       $(function () {
-        var start = document.getElementById("delete");
-        var start_position = start.getBoundingClientRect();
-        var start_x = start_position.left;
-        var start_y = start_position.top;
-
-        var goal = document.getElementsByClassName("trash");
-        var goal_position = goal.getBoundingClientRect();
-        var goal_x = goal_position.left;
-        var goal_y = goal_position.top;
-
-        var distance_x = goal_x - start_x;
-        var distance_y = goal_y - start_y;
-
         $.fn.animate2 = function (properties, duration, ease) {
           ease = ease || "ease";
           var $this = this;
@@ -68,26 +52,46 @@
           });
         };
 
-        $("#delete").on("click", function (e) {
-          e.preventDefault();   ///効かない
-          var linkUrl = $(this).attr('href');
+        $(".delete").on("click", function (e) {
+          e.preventDefault();
+          var linkUrl = $(this).attr("href");
+          console.log(linkUrl);
+          var start_position = $(this).offset();
+          var start_x = start_position.left;
+          var start_y = start_position.top;
+          console.log(start_x);
+          console.log(start_y);
 
-          $(".diary").animate2(
-            {
-              transform:
-                "translateX(" +
-                distance_x +
-                "px) " +
-                "translateY(" +
-                distance_y +
-                "px)",
-            },
-            1000
-          );
+          var goal_position = $("#trash").offset();
+          var goal_x = goal_position.left;
+          var goal_y = goal_position.top;
+          console.log(goal_x);
+          console.log(goal_y);
 
-          setTimeout(function(){
-            window.location = linkUrl;
-          }, 500);
+          var distance_x = goal_x - start_x + 65;
+          var distance_y = goal_y - start_y + 90;
+
+          $(this)
+            .closest(".diary")
+            .animate2(
+              {
+                transform:
+                  "translateX(" +
+                  distance_x +
+                  "px) " +
+                  "translateY(" +
+                  distance_y +
+                  "px) rotate(360deg)",
+              },
+              1000
+            )
+            .animate({ opacity: 0 }, 500);
+          setTimeout(function () {
+            $("#trash").animate2({ transform: "scale(1.4,1.4)" }, 80);
+            setTimeout(function () {
+              window.location = linkUrl;
+            }, 150);
+          }, 1700);
         });
       });
     </script>
