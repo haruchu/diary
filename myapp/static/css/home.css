@@ -51,6 +51,7 @@ body {
   position: absolute;
   top: 8px;
   right: 40px;
+  text-decoration: none;
 }
 
 #trash {

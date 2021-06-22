@@ -7,5 +7,5 @@ class DiaryForm(forms.ModelForm):
 
     class Meta:
         model = Diary
-        fields = ("user","text")
+        fields = ("user","title","text")
 
