@@ -12,21 +12,7 @@
     <div class="v-center"></div>
     <div id="container">
       <div class="book">
-        <div class="first paper">
-          <div class="page front contents">
-            <div class="intro">
-              <h2>日記</h2>
-            </div>
-          </div>
-          <div class="page back"></div>
-        </div>
-        <div class="second paper">
-          <div class="page front last contents">
-            <div id="">{ diary.title }</div>
-          </div>
-          <div class="page back"></div>
-        </div>
-        <div class="side"></div>
+        <div class="side" id="side"></div>
         <div class="bottom"></div>
         <div class="shadow"></div>
       </div>
@@ -47,6 +33,29 @@
           return false;
         });
       });
+
+      for (let i = 0; i <= "{{diary_cnt}}"; i++) {
+        let text = "";
+        if (i === 0) {
+          text += '<div class="first paper">';
+          text += '<div class="page front contents">';
+          text += '<div class="intro">';
+          text += "<h2>日記</h2>";
+          text += "</div>";
+          text += "</div>";
+          text += '<div class="page back"></div>';
+          text += "</div>";
+          text += "";
+        } else {
+          text += '<div class="second paper">';
+          text += '<div class="page front last contents">';
+          text += "<div>{{ diary.title }}</div>";
+          text += "</div>";
+          text += '<div class="page back"></div>';
+          text += "</div>";
+        }
+        $("#side").before(text);
+      }
     </script>
   </body>
 </html>
