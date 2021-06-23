@@ -37,21 +37,21 @@
       for (let i = 0; i <= "{{diary_cnt}}"; i++) {
         let text = "";
         if (i === 0) {
-          text += '<div class="first paper">';
+          text += '<div class="first paper" style="z-index: '+(50-i)+';">';
           text += '<div class="page front contents">';
           text += '<div class="intro">';
-          text += "<h2>日記</h2>";
+          text += "<h1>日記</h1>";
           text += "</div>";
           text += "</div>";
-          text += '<div class="page back"></div>';
+          text += '<div class="page back" style="transform: translateZ(-'+i+'px);"></div>';
           text += "</div>";
           text += "";
         } else {
-          text += '<div class="second paper">';
+          text += '<div class="second paper" style="z-index: '+(50-i)+';">';
           text += '<div class="page front last contents">';
           text += "<div>{{ diary.title }}</div>";
           text += "</div>";
-          text += '<div class="page back"></div>';
+          text += '<div class="page back" style="transform: translateZ(-'+i+'px);"></div>';
           text += "</div>";
         }
         $("#side").before(text);
