@@ -12,6 +12,39 @@
     <div class="v-center"></div>
     <div id="container">
       <div class="book">
+        <div class="first paper" style="z-index: 50">
+          <div class="page front contents">
+            <div class="intro">
+              <h1>日記</h1>
+            </div>
+          </div>
+          <div class="page back" style="transform: translateZ(0px);"></div>
+        </div>
+        {% for diary in diarys %}
+        {% if forloop.last %}
+          <div class="paper" style="z-index: {{ forloop.revcounter }}">
+            <div class="last page front contents">
+              <div>{{ diary.title }}</div>
+            </div>
+            <div
+              class="page back"
+              style="transform: translateZ(-{{ forloop.counter }}px);"
+            ></div>
+          </div>
+        {% else %}
+          <div class="paper" style="z-index: {{ forloop.revcounter }}">
+            <div class="page front contents">
+              <div>{{ diary.title }}</div>
+            </div>
+            <div
+              class="page back"
+              style="transform: translateZ(-{{ forloop.counter }}px);"
+            ></div>
+          </div>
+        {% endif %}
+        {% endfor %}
+
+
         <div class="side" id="side"></div>
         <div class="bottom"></div>
         <div class="shadow"></div>
@@ -34,28 +67,7 @@
         });
       });
 
-      for (let i = 0; i <= "{{diary_cnt}}"; i++) {
-        let text = "";
-        if (i === 0) {
-          text += '<div class="first paper" style="z-index: '+(50-i)+';">';
-          text += '<div class="page front contents">';
-          text += '<div class="intro">';
-          text += "<h1>日記</h1>";
-          text += "</div>";
-          text += "</div>";
-          text += '<div class="page back" style="transform: translateZ(-'+i+'px);"></div>';
-          text += "</div>";
-          text += "";
-        } else {
-          text += '<div class="second paper" style="z-index: '+(50-i)+';">';
-          text += '<div class="page front last contents">';
-          text += "<div>{{ diary.title }}</div>";
-          text += "</div>";
-          text += '<div class="page back" style="transform: translateZ(-'+i+'px);"></div>';
-          text += "</div>";
-        }
-        $("#side").before(text);
-      }
+      
     </script>
   </body>
 </html>

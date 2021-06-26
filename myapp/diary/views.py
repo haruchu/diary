@@ -44,7 +44,7 @@ def delete(request, diary_id):
 def diary(request, diary_id):
     diary_text = Diary.objects.get(pk=diary_id)
     context ={
-        'diary': Diary.objects.get(pk=diary_id),
+        'diarys': Diary.objects.all,
         'diary_cnt':Diary.objects.filter(pk=diary_id).count(),
     }
     return render(request, 'diary.html', context)
