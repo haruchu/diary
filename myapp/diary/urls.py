@@ -7,4 +7,7 @@ urlpatterns = [
     path('create_diary/', views.create_diary, name='create_diary'),
     path("<int:diary_id>/delete/", views.delete, name="delete"),
     path("<int:diary_id>/diary/", views.diary, name="diary"),
+    path("<int:month>/diary/", views.diary_month, name="diary_month"),
+    
+
 ]

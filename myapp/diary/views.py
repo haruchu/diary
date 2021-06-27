@@ -5,13 +5,15 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .forms import DiaryForm
 from .models import Diary
+from django.utils import timezone
+import datetime
 from .helpers import get_current_user
 
 
 @login_required
 def new_diary(request):
     current_user = get_current_user(request)
-    initial_dict = {'user': request.user}
+    initial_dict = {'user': request.user,'month':datetime.datetime.now().month}
     form = DiaryForm(request.POST or None, initial=initial_dict)
     context = {
         "user": request.user,
@@ -42,10 +44,17 @@ def delete(request, diary_id):
 
 @login_required
 def diary(request, diary_id):
-    diary_text = Diary.objects.get(pk=diary_id)
     context ={
         'diarys': Diary.objects.all,
         'diary_cnt':Diary.objects.filter(pk=diary_id).count(),
     }
     return render(request, 'diary.html', context)
+
+@login_required
+def diary_month(request, month):
+    context ={
+        'diarys': Diary.objects.get(created_date__month=month).order_by('created_date'),
+        'month':month,
+    }
+    return render(request, 'diary_month.html', context)
 

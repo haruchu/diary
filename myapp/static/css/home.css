@@ -51,19 +51,33 @@ body {
   margin: 0;
 }
 
-.diary .action-content .delete {
+.diary .action-content .delete,
+.diary .action-content .month {
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: gray;
-  color: white;
   position: absolute;
   top: 8px;
   right: 40px;
   text-decoration: none;
+}
+
+.diary .action-content .delete {
+  background-color: gray;
+  color: white;
+  top: 8px;
+  right: 40px;
+}
+
+.diary .action-content .month {
+  background-color: #85e2f3;
+  color: black;
+  top: 8px;
+  left: 40px;
+
 }
 
 #trash {
