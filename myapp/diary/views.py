@@ -45,15 +45,14 @@ def delete(request, diary_id):
 @login_required
 def diary(request, diary_id):
     context ={
-        'diarys': Diary.objects.all,
-        'diary_cnt':Diary.objects.filter(pk=diary_id).count(),
+        'diary': Diary.objects.get(pk=diary_id),
     }
     return render(request, 'diary.html', context)
 
 @login_required
 def diary_month(request, month):
     context ={
-        'diarys': Diary.objects.get(created_date__month=month).order_by('created_date'),
+        'diarys': Diary.objects.filter(month=month).order_by('created_date'),
         'month':month,
     }
     return render(request, 'diary_month.html', context)
