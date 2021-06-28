@@ -24,17 +24,16 @@ body {
 }
 
 .diary .content-view .content-link {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  padding: 20px;
+  padding: 20px 12px 8px;
   color: black;
 }
 
 .diary .content-view .content-link:hover {
   text-decoration: none;
 }
-
-
 
 .diary .content-view span {
   margin: 8px;
@@ -61,7 +60,6 @@ body {
   border-radius: 50%;
   position: absolute;
   top: 8px;
-  right: 40px;
   text-decoration: none;
 }
 
@@ -92,4 +90,44 @@ body {
 
 .mini {
   transform: scale(0.5,0.5);
+}
+
+@media (max-width: 600px) {
+  .diary {
+    width: 100px;
+    height: 100px;
+    margin: 16px 20px;
+  }
+
+  .diary .content-view .content-link{
+    padding: 10px 8px 2px;
+    font-size: 10px;
+  }
+
+  .diary .content-view span {
+    margin: 4px;
+  }
+
+  .diary .action-content .delete,
+.diary .action-content .month {
+  width: 20px;
+  height: 20px;
+  top: 4px;
+  font-size: 8px;
+}
+.diary .action-content .delete{
+  right: 20px;
+}
+
+.diary .action-content .month {
+  left: 20px;
+}
+
+#trash {
+  width: 60px;
+  height: 70px;
+  bottom: 16px;
+  right: 20px;
+
+}
 }

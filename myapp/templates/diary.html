@@ -24,7 +24,7 @@
             <div class="last page front contents">
               <div class="title"><span>{{ diary.title }}</span></div>
               <div class="date"><span>{{ diary.created_date|date:"Y n/j H:i" }}</span></div>
-              <div class="text"><span>{{ diary.text|wordwrap:10 }}</span></div>
+              <div class="text"><span>{{ diary.text|wordwrap:10|linebreaksbr }}</span></div>
             </div>
             <div
               class="page back"

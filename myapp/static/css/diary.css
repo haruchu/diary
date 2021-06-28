@@ -137,6 +137,7 @@ body {
 
 .book .page .text {
   letter-spacing: 2px;
+  overflow: hidden;
 }
 
 .book .first .page {
