@@ -3,6 +3,10 @@ body {
   position: relative;
 }
 
+.menu {
+  margin-top: 10px;
+}
+
 .diaries {
   display: flex;
   flex-wrap: wrap;

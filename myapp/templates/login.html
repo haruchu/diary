@@ -8,17 +8,13 @@
     <title>login</title>
   </head>
   <body>
-    <div>
-      <form method="POST" action="{% url 'signup:logIn' %}" autocomplete="off">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username" />
-        <input type="password" name="password" placeholder="Password" />
-        <div class="submit"><button type="submit">ログイン</button></div>
-        {{ error }}
-      </form>
-    </div>
-      <a href="{% url 'top:top' %}" class="back"
-        ><span>TOP</span></a
-      >
+    <form method="POST" action="{% url 'signup:logIn' %}" autocomplete="off">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" />
+      <input type="password" name="password" placeholder="Password" />
+      <div><button type="submit" class="btn-1">ログイン</button></div>
+      {{ error }}
+    </form>
+    <a href="{% url 'top:top' %}" class="back"><span>TOP</span></a>
   </body>
 </html>

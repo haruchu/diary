@@ -18,8 +18,8 @@
   </head>
   <body>
     <div class="menu">
-      <a href="{% url 'signup:logOut' %}" class="m-5">ログアウト</a>
-      <a href="{% url 'diary:new_diary' %}" class="m-5">日記を書く</a>
+      <a href="{% url 'signup:logOut' %}" class="m-3 btn bg-warning">ログアウト</a>
+      <a href="{% url 'diary:new_diary' %}" class="m-3 btn bg-primary">日記を書く</a>
     </div>
     <div class="container">
       <div class="diaries">
@@ -61,7 +61,6 @@
         $(".delete").on("click", function (e) {
           e.preventDefault();
           var linkUrl = $(this).attr("href");
-          console.log(linkUrl);
           var start_position = $(this).offset();
           var start_x = start_position.left;
           var start_y = start_position.top;
