@@ -7,6 +7,7 @@ View the project on Github : https://github.com/akzhy/Vara
 html,
 body {
   height: 100%;
+  position: relative;
 }
 
 body {
@@ -188,6 +189,34 @@ body {
 
 .book .paper:not(.first) .back {
   background: #e1e1e1;
+}
+
+.home-btn {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  background-color: black;
+  opacity: 0.8;
+  border-radius: 30%;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  transition-duration: 0.2s;
+}
+
+.home-btn:hover {
+  opacity: 1;
+  transform: scale(1.1, 1.1);
+}
+
+.home-btn:focus {
+  transform: scale(1.2,1.2);
 }
 
 @media (max-width: 700px) {
