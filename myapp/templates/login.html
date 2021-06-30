@@ -8,9 +8,10 @@
 </head>
 <body>
   <div>
-    <form method="POST">
+    <form method="POST" action="{% url 'signup:logIn' %}">
       {% csrf_token %}
-      {{form.as_p}}
+      <input type="text" name="username">
+      <input type="text" name="password">
       <div><button type="submit">ログイン</button></div>
     </form>
   </div>
