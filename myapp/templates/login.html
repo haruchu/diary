@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login</title>
-</head>
-<body>
-  <div>
-    <form method="POST" action="{% url 'signup:logIn' %}">
-      {% csrf_token %}
-      <input type="text" name="username">
-      <input type="text" name="password">
-      <div><button type="submit">ログイン</button></div>
-    </form>
-    {{ error }}
-  </div>
-  <div class="back">
-    <a href="{% url 'top:top' %}"><span><i></i>TOP</span></a>
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/signup.css" />
+    <title>login</title>
+  </head>
+  <body>
+    <div>
+      <form method="POST" action="{% url 'signup:logIn' %}" autocomplete="off">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" />
+        <input type="password" name="password" placeholder="Password" />
+        <div class="submit"><button type="submit">ログイン</button></div>
+        {{ error }}
+      </form>
+    </div>
+      <a href="{% url 'top:top' %}" class="back"
+        ><span>TOP</span></a
+      >
+  </body>
 </html>
