@@ -15,12 +15,13 @@
         autocomplete="off"
       >
         {% csrf_token %} {{form.user.as_hidden}}
-        <input type="text" name="title" placeholder="タイトル" />
+        <input type="text" name="title" placeholder="タイトル" required />
         <textarea
           name="text"
           id="text"
           maxlength="250"
           placeholder="日記の内容を書いてね"
+          required
         ></textarea>
         <div id="text-num">
         </div>
