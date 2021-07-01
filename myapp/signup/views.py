@@ -10,7 +10,10 @@ def userconfirm(request):
     form = UserCreationForm(request.POST)
     if form.is_valid():
         return render(request, 'confirm.html', {'form': form})
-    return render(request, 'signup.html', {'form': form})
+    error = "入力が間違っています"
+    if len(request.POST["password1"]) < 8:
+        error = "パスワードが短いです"
+    return render(request, 'signup.html', {'form': form,'error':error})
 
 def usercreate(request):
     if request.method == 'POST':
