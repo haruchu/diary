@@ -4,14 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../static/css/diary.css" />
   <title>New Diary</title>
 </head>
 <body>
-  <div>
-    <form method="POST" action="{% url 'diary:create_diary' %}">
+  <div class="new_diary">
+    <form method="POST" action="{% url 'diary:create_diary' %}" autocomplete="off">
       {% csrf_token %}
-      {{form.as_p}}
-      <input type="submit" value="OK">
+      {{form.user.as_hidden}}
+      <input type="text" name="title" placeholder="タイトル">
+      <textarea name="text" maxlength="250" placeholder="日記の内容を書いてね"></textarea>
+      <button type="submit" class="btn-1">OK</button>
     </form>
   </div>
 </body>

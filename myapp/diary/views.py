@@ -17,7 +17,6 @@ def new_diary(request):
     form = DiaryForm(request.POST or None, initial=initial_dict)
     context = {
         "user": request.user,
-        "current_user": current_user,
         "form": form,
         "diarys": Diary.objects.order_by('-created_date').all(),
     }
