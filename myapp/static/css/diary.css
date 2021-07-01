@@ -307,3 +307,10 @@ body {
 .new_diary form .btn-1:focus {
   transform: scale(1.2,1.2);
 }
+
+#text-num span {
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0 8px;
+
+}

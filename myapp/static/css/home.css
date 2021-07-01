@@ -5,6 +5,8 @@ body {
 
 .menu {
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .diaries {
@@ -96,7 +98,7 @@ body {
   transform: scale(0.5,0.5);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .diary {
     width: 100px;
     height: 100px;
