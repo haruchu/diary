@@ -9,6 +9,6 @@ from diary.models import Diary
 def home(request):
     context = {
         "user": request.user,
-        "diarys": Diary.objects.order_by('-created_date').all(),
+        "diarys": Diary.objects.filter(user=request.user).order_by('-created_date').all(),
     }
     return render(request, 'home.html', context)

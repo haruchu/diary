@@ -9,7 +9,7 @@
 <body>
   <h1>ユーザー登録</h1>
   <div>
-    <form action="{% url 'signup:confirm' %}" method="post">
+    <form action="{% url 'signup:confirm' %}" method="post" autocomplete="off">
       <!-- ユーザ名 -->
       <div>
         <label for="name">
@@ -28,6 +28,16 @@
         <div>
           {% csrf_token %}
           {{ form.password1 }}
+        </div>
+      </div>
+      <!-- /パスワード -->
+
+      <!-- パスワード -->
+      <div>
+        <label for="password">パスワード<span>必須</span></label>
+        <div>
+          {% csrf_token %}
+          {{ form.password2 }}
         </div>
       </div>
       <!-- /パスワード -->
