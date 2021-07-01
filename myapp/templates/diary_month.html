@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../static/css/diary.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="v-center"></div>
+    <div id="container">
+      <div class="book">
+        <div class="first paper" style="z-index: 50">
+          <div class="page front contents">
+            <div class="intro">
+              <h1>{{ month }}月</h1>
+            </div>
+          </div>
+          <div class="page back" style="transform: translateZ(0px);"></div>
+        </div>
+        {% for diary in diarys %}
+        {% if forloop.last %}
+          <div class="paper" style="z-index: {{ forloop.revcounter }}">
+            <div class="last page front contents">
+              <div class="title"><span>{{ diary.title }}</span></div>
+              <div class="date"><span>{{ diary.created_date|date:"Y n/j H:i" }}</span></div>
+              <div class="text"><span>{{ diary.text|wordwrap:10 }}</span></div>
+            </div>
+            <div
+              class="page back"
+              style="transform: translateZ(-{{ forloop.counter }}px);"
+            ></div>
+          </div>
+        {% else %}
+          <div class="paper" style="z-index: {{ forloop.revcounter }}">
+            <div class="page front contents">
+              <div class="title"><span>{{ diary.title }}</span></div>
+              <div class="date"><span>{{ diary.created_date|date:"Y n/j H:i" }}</span></div>
+              <div class="text"><span>{{ diary.text|wordwrap:10 }}</span></div>
+            </div>
+            <div
+              class="page back"
+              style="transform: translateZ(-{{ forloop.counter }}px);"
+            ></div>
+          </div>
+        {% endif %}
+        {% endfor %}
+
+
+        <div class="side" id="side"></div>
+        <div class="bottom"></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+    <a href="{% url 'home:home' %}" class="home-btn"><i class="fas fa-home"></i></a>
+
+    <script>
+      $(function () {
+        $(".front:not(.last)").on("click", function () {
+          $(".book").addClass("open");
+          $(this).parent(".paper").addClass("open");
+        });
+
+        $(".back").on("click", function () {
+          if ($(this).parent(".paper").index() == 0) {
+            $(".book").removeClass("open");
+          }
+          $(this).parent(".paper").removeClass("open");
+          return false;
+        });
+      });
+
+      
+    </script>
+  </body>
+</html>

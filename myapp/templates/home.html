@@ -1,24 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>home</title>
-</head>
-<body>
-  <h1>welcome</h1>
-  <a href="{% url 'logout' %}">ログアウト</a>
-  <a href="{% url 'diary:new_diary' %}">日記を書く</a>
-
-  {% for diary in diarys %}
-    <div>
-      <p>{{ diary.created_date|date:"Y n/j H:i"}}</p>
-      <p>{{ diary.text }}</p>
-      <p>
-        <a href="{% url 'diary:delete' diary.id %}">削除</a>
-      </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>home</title>
+  </head>
+  <body>
+    <div class="menu">
+      <a href="{% url 'signup:logOut' %}" class="m-3 btn bg-warning">ログアウト</a>
+      <a href="{% url 'diary:new_diary' %}" class="m-3 btn bg-primary">日記を書く</a>
     </div>
-  {% endfor %}
-</body>
+    <div class="container">
+      <div class="diaries">
+        {% for diary in diarys %}
+        <div class="diary">
+          <div class="content-view">
+            <a href="{% url 'diary:diary' diary.id %}" class="content-link">
+              <span>{{ diary.created_date|date:"Y n/j H:i"}}</span>
+              <span>{{ diary.title }}</span>
+            </a>
+          </div>
+          <div class="action-content">
+            <p>
+              <a class="delete" href="{% url 'diary:delete' diary.id %}">消</a>
+              <a class="month" href="{% url 'diary:diary_month' diary.month %}">{{ diary.month }}月</a>
+            </p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <span id="trash">ゴミ箱</span>
+    </div>
+    <script>
+      $(function () {
+        $.fn.animate2 = function (properties, duration, ease) {
+          ease = ease || "ease";
+          var $this = this;
+          var cssOrig = { transition: $this.css("transition") };
+          return $this.queue((next) => {
+            properties["transition"] = "all " + duration + "ms " + ease;
+            $this.css(properties);
+            setTimeout(function () {
+              $this.css(cssOrig);
+              next();
+            }, duration);
+          });
+        };
+
+        $(".delete").on("click", function (e) {
+          e.preventDefault();
+          var linkUrl = $(this).attr("href");
+          var start_position = $(this).offset();
+          var start_x = start_position.left;
+          var start_y = start_position.top;
+          console.log(start_x);
+          console.log(start_y);
+
+          var goal_position = $("#trash").offset();
+          var goal_x = goal_position.left;
+          var goal_y = goal_position.top;
+          console.log(goal_x);
+          console.log(goal_y);
+
+          var distance_x = goal_x - start_x + 65;
+          var distance_y = goal_y - start_y + 90;
+
+          $(this)
+            .closest(".diary")
+            .animate2(
+              {
+                transform:
+                  "translateX(" +
+                  distance_x +
+                  "px) " +
+                  "translateY(" +
+                  distance_y +
+                  "px) rotate(360deg)",
+              },
+              1000
+            )
+            .animate({ opacity: 0 }, 500);
+          setTimeout(function () {
+            $("#trash").animate2({ transform: "scale(1.4,1.4)" }, 80);
+            setTimeout(function () {
+              window.location = linkUrl;
+            }, 150);
+          }, 1700);
+        });
+      });
+    </script>
+  </body>
 </html>
