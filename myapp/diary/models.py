@@ -22,4 +22,4 @@ class Diary(models.Model):
     objects = DiaryQuerySet.as_manager()
 
     def __str__(self):
-        return (str(self.title) + '(' + str(self.user) + ')' + str(self.created_date))
+        return ('タイトル:'+str(self.title) + '　(ユーザー：' + str(self.user) + ')')

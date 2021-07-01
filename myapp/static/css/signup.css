@@ -85,3 +85,16 @@ form input:focus {
   color: black;
   transform: scale(1.2, 1.2);
 }
+
+.confirm p {
+  font-weight: 800;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-group form {
+  width: 100px;
+}
+

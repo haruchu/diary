@@ -4,34 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/css/signup.css" />
+
   <title>confirm</title>
 </head>
 <body>
   <h1>ユーザー確認</h1>
-  <table>
-    <tr><td>お名前</td><td>{{form.cleaned_data.username}}</td></tr>
-    <tr><td>パスワード</td><td>********</td></tr>
-  </table>
-  <!-- 修正 -->
-  <div>
+  <div class="confirm">
+    <p>ユーザ名：　{{form.cleaned_data.username}}</p>
+    <p>パスワード：　********</p>
+  </div>
+
+  <div class="btn-group">
     <form action="{% url 'signup:signup' %}" method="POST">
       {% csrf_token %}
       {% for field in form %}
         {{field.as_hidden}}
       {% endfor %}
-      <button type="submit">修正</button>
+      <button type="submit" class="btn-1">修正</button>
     </form>
-    <!-- 登録 -->
     <form action="{% url 'signup:create' %}" method="POST">
       {% csrf_token %}
       {% for field in form %}
         {{field.as_hidden}}
       {% endfor %}
-      <button type="submit">登録</button>
+      <button type="submit" class="btn-1">登録</button>
     </form>
   </div>
-  <div>
-    <a href="{% url 'top:top' %}"><span><i></i>TOP</span></a>
-  </div>
+    <a href="{% url 'top:top' %}" class="back"><span>TOP</span></a>
 </body>
 </html>
